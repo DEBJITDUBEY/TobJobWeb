@@ -11,6 +11,24 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+ <script>
+    $(document).ready(function(){
+      
+      $('#form1').submit(function(e){
+          var uid=$('#email').val();
+           var pwd=$('#pwd').val();
+  if(uid.length<1){
+            $('#email').after('<span class="error">Email is required</span>');
+           }
+            if(pwd.length<1){
+            $('#pwd').after('<span class="error">Password is required</span>');
+           }
+
+        });  
+   });
+  </script>
+
 <style type="text/css">
   .mega-menu{
     width: 400px;
@@ -91,12 +109,12 @@
      
       <div class="well">
 <div >
-<form action="JobSeekerLogin" method="post">
+<form action="JobSeekerLogin" method="post" id="form1">
   <center><h3>Student login</h3>
   <%
       String status=(String)request.getAttribute("status");
       if(status!=null){
-    	  out.println("<hr><b>"+status+"</b>");
+        out.println("<hr><b>"+status+"</b>");
       }
   %>
   </center>
@@ -219,12 +237,12 @@ Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jobdb?us
 PreparedStatement smt=con.prepareStatement("select * from jobs where status1='T'");
 ResultSet rs=smt.executeQuery();
 %>
-	<div class="wrapper-container">
+  <div class="wrapper-container">
   <div class="well">
     <div class="row">
     <%
     if(rs.next()) {
-    	String url="ApplyJob?jobid="+rs.getString(1);
+      String url="ApplyJob?jobid="+rs.getString(1);
     %>
        <div class="col-sm-2">
         <label><%=rs.getString(4) %></label>
@@ -242,7 +260,7 @@ ResultSet rs=smt.executeQuery();
       <%
       }
     if(rs.next()) {
-    	String url="ApplyJob?jobid="+rs.getString(1);
+      String url="ApplyJob?jobid="+rs.getString(1);
     %>
        <div class="col-sm-2">
         <label><%=rs.getString(4) %></label>
@@ -260,7 +278,7 @@ ResultSet rs=smt.executeQuery();
       <%
       }
     if(rs.next()) {
-    	String url="ApplyJob?jobid="+rs.getString(1);
+      String url="ApplyJob?jobid="+rs.getString(1);
     %>
        <div class="col-sm-2">
         <label><%=rs.getString(4) %></label>
@@ -278,7 +296,7 @@ ResultSet rs=smt.executeQuery();
       <%
       }
        if(rs.next()) {
-    	   String url="ApplyJob?jobid="+rs.getString(1);
+         String url="ApplyJob?jobid="+rs.getString(1);
       %>
       <div class="col-sm-2">
         <label><%=rs.getString(4) %></label>
