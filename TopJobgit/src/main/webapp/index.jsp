@@ -131,7 +131,7 @@
      <button type="button"  class="btn btn-danger" >RESET</button>
      </center>
       </form>
-     <center> <a href="JobSeeker.html">          Not registered yet?...                        register now</a></center>
+     <center> <a href="JobSeeker.html">          Not registered yet???...                        register now</a></center>
    
    </div>
   </div>
@@ -241,7 +241,7 @@ ResultSet rs=smt.executeQuery();
   <div class="well">
     <div class="row">
     <%
-    if(rs.next()) {
+    while(rs.next()) {
       String url="ApplyJob?jobid="+rs.getString(1);
     %>
        <div class="col-sm-2">
@@ -259,59 +259,6 @@ ResultSet rs=smt.executeQuery();
       </div>
       <%
       }
-    if(rs.next()) {
-      String url="ApplyJob?jobid="+rs.getString(1);
-    %>
-       <div class="col-sm-2">
-        <label><%=rs.getString(4) %></label>
-        <label><%=rs.getString(3) %></label>
-       <label><%=rs.getString(10) %></label>
-       <br>
-       <a href="<%=url%>" class="btn btn-info" role="button">Apply</a>
-       
-      </div>
-       <div class="col-sm-1">
-        <label><label><%=rs.getString(8) %></label></label>
-        <br>
-        <label><label><%=rs.getString(9) %></label></label>
-      </div>
-      <%
-      }
-    if(rs.next()) {
-      String url="ApplyJob?jobid="+rs.getString(1);
-    %>
-       <div class="col-sm-2">
-        <label><%=rs.getString(4) %></label>
-        <label><%=rs.getString(3) %></label>
-       <label><%=rs.getString(10) %></label>
-       <br>
-       <a href="<%=url%>" class="btn btn-info" role="button">Apply</a>
-       
-      </div>
-       <div class="col-sm-1">
-        <label><label><%=rs.getString(8) %></label></label>
-        <br>
-        <label><label><%=rs.getString(9) %></label></label>
-      </div>
-      <%
-      }
-       if(rs.next()) {
-         String url="ApplyJob?jobid="+rs.getString(1);
-      %>
-      <div class="col-sm-2">
-        <label><%=rs.getString(4) %></label>
-        <label><%=rs.getString(3) %></label>
-       <label><%=rs.getString(10) %></label>
-       <br>
-       <a href="<%=url%>" class="btn btn-info" role="button">Apply</a>
-      </div>
-       <div class="col-sm-1">
-        <label><label><%=rs.getString(8) %></label></label>
-        <br>
-        <label><label><%=rs.getString(9) %></label></label>
-        </div>
-        <%
-        }
         %>
       </div>
     </div>

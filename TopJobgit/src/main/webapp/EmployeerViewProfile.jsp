@@ -12,7 +12,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <%@include file="EmployeerMenubar.jsp" %>
+
+	<div class="container">
+	<img src="Image\e1.jpg" style="height: 200px;width: 1200px;">
+	</div>
+<div class="well">
 <%
 String emailid=null;
 emailid=(String)session.getAttribute("emailid");
@@ -22,22 +28,22 @@ PreparedStatement smt=con.prepareStatement("select * from employeer where email=
 smt.setString(1,emailid);
 ResultSet rs=smt.executeQuery();
 %>
-	
+	 <div class="row">
+	 <div class="col-sm-2"></div>
+	 <div class="col-sm-2"></div>
+    <%
+  String url1="FileDownload"; 
+  %>
+<img src="<%=url1%>" style=" border-radius:80%;width: 100px; height: 100px">
+  </div>
+  
     <%
     if(rs.next()) {
     	
     %>
        <div>
        <label><%=rs.getString(1) %></label>
-        <label><%=rs.getString(2) %></label>
-          <label><%=rs.getString(3) %></label>
-          <label><%=rs.getString(4) %></label> 
-          <label><%=rs.getString(5) %></label>
-           <label><%=rs.getString(6) %></label>
-            <label><%=rs.getString(7) %></label>
-             <label><%=rs.getString(8) %></label>
-              <label><%=rs.getString(9) %></label>
-               <label><%=rs.getString(10) %></label>
+      
            
      </div>
   <% 
@@ -46,7 +52,7 @@ rs.close();
 con.close();
 %>
 
-
+</div>
 
 
 

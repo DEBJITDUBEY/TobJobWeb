@@ -29,7 +29,7 @@
   <div class="col-sm-3">
   <div class="form-group">
     <label >Company Name</label>
-    <input type="password" class="form-control" id="cname" name="cname" placeholder="Enter password">
+    <input type="text" class="form-control" id="cname" name="cname" placeholder="Enter password">
   </div>
 </div>
 </div>
@@ -68,7 +68,7 @@
   <div class="col-sm-3">
   <div class="form-group">
     <label >Experience</label>
-    <input type="password" class="form-control" id="jexperience" name="jexperience" placeholder="Enter password">
+    <input type="text" class="form-control" id="jexperience" name="jexperience" placeholder="Enter password">
   </div>
 </div>
 </div>
@@ -84,7 +84,7 @@
   <div class="col-sm-3">
   <div class="form-group">
     <label >Location</label>
-    <input type="password" class="form-control" id="jlocation" name="jlocation" placeholder="Enter password">
+    <input type="text" class="form-control" id="jlocation" name="jlocation" placeholder="Enter password">
   </div>
 </div>
 </div>

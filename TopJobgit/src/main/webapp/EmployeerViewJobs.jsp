@@ -25,10 +25,11 @@ ResultSet rs=smt.executeQuery();
 <div class="well">
 <div class="row">
 <%
-if(rs.next()) {
-
+while(rs.next()) {
+   String jobid = rs.getString(1);
+   String joburl="Applicant.jsp?jobid="+jobid;
 %>
-   <div class="col-sm-2">
+   <div class="col-sm-6">
     <label><%=rs.getString(4) %></label>
     <label><%=rs.getString(3) %></label>
    <label><%=rs.getString(10) %></label>
@@ -36,70 +37,21 @@ if(rs.next()) {
    
    
   </div>
-   <div class="col-sm-1">
-    <label><label><%=rs.getString(8) %></label></label>
+   <div class="col-sm-3">
+    <label><%=rs.getString(8) %></label>
     <br>
-    <label><label><%=rs.getString(9) %></label></label>
-  </div>
-  <%
-  }
-if(rs.next()) {
-	
-%>
-   <div class="col-sm-2">
-    <label><%=rs.getString(4) %></label>
-    <label><%=rs.getString(3) %></label>
-   <label><%=rs.getString(10) %></label>
-   <br>
- 
-   
-  </div>
-   <div class="col-sm-1">
-    <label><label><%=rs.getString(8) %></label></label>
-    <br>
-    <label><label><%=rs.getString(9) %></label></label>
-  </div>
-  <%
-  }
-if(rs.next()) {
-	
-%>
-   <div class="col-sm-2">
-    <label><%=rs.getString(4) %></label>
-    <label><%=rs.getString(3) %></label>
-   <label><%=rs.getString(10) %></label>
-   <br>
-   
-   
-  </div>
-   <div class="col-sm-1">
-    <label><label><%=rs.getString(8) %></label></label>
-    <br>
-    <label><label><%=rs.getString(9) %></label></label>
-  </div>
-  <%
-  }
-   if(rs.next()) {
-	  
-  %>
-  <div class="col-sm-2">
-    <label><%=rs.getString(4) %></label>
-    <label><%=rs.getString(3) %></label>
-   <label><%=rs.getString(10) %></label>
-   <br>
-   
-  </div>
-   <div class="col-sm-1">
-    <label><label><%=rs.getString(8) %></label></label>
-    <br>
-    <label><label><%=rs.getString(9) %></label></label>
+    <label><%=rs.getString(9) %></label>
     </div>
-    <%
-    }
-    %>
+    <div class="col-sm-3">
+    <label><a href="<%=joburl%>">View Applicants</a></label>
+  </div>
+  <%
+  }
+  %>
   </div>
 </div>
-</div><%
+</div>
+<%
 rs.close();
 con.close();
 %>

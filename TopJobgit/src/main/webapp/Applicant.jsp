@@ -16,45 +16,52 @@
 String employeeid=null;
 employeeid=(String)session.getAttribute("empid");
 System.out.println(employeeid);
+String jobid= request.getParameter("jobid");
 Class.forName("com.mysql.cj.jdbc.Driver"); 
 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jobdb?useSSL=false","root","myroot");
-PreparedStatement smt=con.prepareStatement("select * from jobseaker where email in(select Job_seaker_id from applyJob where job_id in(select job_id from jobs where Employee_id=?))");
-smt.setString(1,employeeid);
+//PreparedStatement smt=con.prepareStatement("select * from jobseaker where email in(select Job_seaker_id from applyJob where job_id in(select job_id from jobs where Employee_id=?))");
+PreparedStatement smt=con.prepareStatement("select jobseaker.*, applyjob.status, applyjob.apply_date, applyjob.app_id from jobseaker,applyjob "+
+" where jobseaker.email=applyjob.job_seaker_id and applyjob.job_id=?");
+smt.setString(1,jobid);
 ResultSet rs=smt.executeQuery();
-%>
-<%
-    if(rs.next()) {
-    
-    	String url1="DownloadResume?id_details="+rs.getString(8);
-    %>
-       <div>
+while(rs.next()) {
+      	String url1="DownloadResume?id_details="+rs.getString(8);
+    	String status = rs.getString(29);  
+    	int appid=rs.getInt(31);
+%>  	
+       <div>Name:
        <label><%=rs.getString(1) %></label>
+       <br>
+       Email:
        <label><%=rs.getString(2) %></label>
-       <label><%=rs.getString(3) %></label>
-       <label><%=rs.getString(4) %></label>
+       <br>
+       Gender:
        <label><%=rs.getString(5) %></label>
-       
-       <label><%=rs.getString(6) %></label>
-       <label><%=rs.getString(7) %></label>
-       
-       <label><%=rs.getString(8) %></label>
        </div>
        <div>
         <a href="<%=url1%>" class="btn btn-info btn-lg">
           <span class="glyphicon glyphicon-download-alt"></span> Download Resume
         </a>
-     <a href="ShortlistedResume" class="btn btn-info btn-lg">
-          <span class="glyphicon glyphicon-ok"></span> Shortlisted
-        </a>
-           
+        <%
+           if(status.equalsIgnoreCase("NO")) {
+        	   
+       %>
+           <form action="ShortListed" method="post">  
+             <input type="hidden" name="appid" value="<%=appid%>">
+            <!--  <a href="shortListed" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-ok"></span> Shortlisted  </a> -->
+            <input type="submit" value="ShortList">
+           </form>  
+         <%
+         }
+         else {
+         %>
+         <font color="red">Already Shortlisted</font>
+         <% }  %>
      </div>
   <% 
   }
 rs.close();
 con.close();
 %>
-
-
-
 </body>
 </html>

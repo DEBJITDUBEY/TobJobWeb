@@ -37,7 +37,7 @@
 
   <div class="col-sm-4">
   
-<form action="EmployeerLogin" method="post"  >
+<form action="EmployeerLogin" method="post">
 		<div class="form-group">
 			<label for="email">Email:</label>
 			<input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
