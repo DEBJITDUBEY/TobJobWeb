@@ -25,8 +25,12 @@ ResultSet rs=smt.executeQuery();
     while(rs.next()) {
     	
     	%>
-    	 <label><%=rs.getString(1) %></label>
-    	
+    	<div class="row">
+    	<div class="col-sm-2"></div>
+    	<div class="col-sm-4">
+    	Name: <label><%=rs.getString(1) %></label>
+    	</div>
+    	</div>
 <%
     }
 %>
