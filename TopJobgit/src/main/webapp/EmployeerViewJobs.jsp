@@ -29,7 +29,7 @@ while(rs.next()) {
    String jobid = rs.getString(1);
    String joburl="Applicant.jsp?jobid="+jobid;
 %>
-   <div class="col-sm-6">
+   <div class="col-sm-4">
     <label><%=rs.getString(4) %></label>
     <label><%=rs.getString(3) %></label>
    <label><%=rs.getString(10) %></label>
@@ -37,12 +37,17 @@ while(rs.next()) {
    
    
   </div>
-   <div class="col-sm-3">
-    <label><%=rs.getString(8) %></label>
+   <div class="col-sm-2">
+  <label><a href="<%=joburl%>">Remove Jobs</a></label>
     <br>
-    <label><%=rs.getString(9) %></label>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-2">
+   <label><a href="<%=joburl%>">Edit Jobs</a></label>
+    </div>
+    <div class="col-sm-2">
+    <label><a href="<%=joburl%>">View Applicants</a></label>
+  </div>
+  <div class="col-sm-2">
     <label><a href="<%=joburl%>">View Applicants</a></label>
   </div>
   <%
