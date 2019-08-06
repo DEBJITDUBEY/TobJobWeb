@@ -16,9 +16,7 @@ import job.model.PostedJob;
 public class JobPost extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public JobPost() {
         super();
         // TODO Auto-generated constructor stub
