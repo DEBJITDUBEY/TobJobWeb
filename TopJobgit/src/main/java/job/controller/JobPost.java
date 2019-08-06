@@ -10,9 +10,7 @@ import javax.servlet.http.HttpSession;
 import job.dao.PostedJobDaoImpl;
 import job.model.PostedJob;
 
-/**
- * Servlet implementation class JobPost
- */
+
 public class JobPost extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
