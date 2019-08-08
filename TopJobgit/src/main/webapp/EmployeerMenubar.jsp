@@ -44,7 +44,7 @@
  	<a href="Logout.jsp" >ShortListed</a></div>
  <div class="col-sm-1"></div>
  <div class="col-sm-1">
- 	 <a href="Logout.jsp" >Schemes</a>
+ 	 <a href="scheme.jsp" >Schemes</a>
  </div>
  <div class="col-sm-1">
  	 <a href="EmployeerViewProfile.jsp" >View Proofile</a>

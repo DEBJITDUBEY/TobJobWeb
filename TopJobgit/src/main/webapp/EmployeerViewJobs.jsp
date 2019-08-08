@@ -48,7 +48,7 @@ while(rs.next()) {
     <label><a href="<%=joburl%>">View Applicants</a></label>
   </div>
   <div class="col-sm-2">
-    <label><a href="<%=joburl%>">View Applicants</a></label>
+    <label><a href="<%=joburl%>">View ShortListed</a></label>
   </div>
   <%
   }
