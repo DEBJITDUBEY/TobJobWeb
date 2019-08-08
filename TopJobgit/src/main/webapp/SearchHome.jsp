@@ -28,24 +28,23 @@ String exp= request.getParameter("exp");
 System.out.println(exp+":"+exp.length());
 Class.forName("com.mysql.cj.jdbc.Driver"); 
 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jobdb?useSSL=false","root","myroot");
-String sql="select * from jobs ";
-String sql1="";
+String sql="select * from jobs WHERE STATUS1='T' ";
 System.out.println(666);
 if(location.length()!=0) 
-	 sql1 = sql1 + " Job_location='"+ location+"' AND" ;
-System.out.println(1+":"+sql1);
+	 sql = sql + " and Job_location='"+ location+"'" ;
+System.out.println(1+":"+sql);
 if(salary.length()!=0) 
-		 sql1 = sql1 + " salary="+ salary+" AND" ;
-System.out.println(2+":"+sql1);
+		 sql = sql + " and salary="+ salary ;
+System.out.println(2+":"+sql);
 if(exp.length()!=0) 
-			 sql1 = sql1 + " experience like'%"+ exp+"%' AND";
-System.out.println(3+":"+sql1);
-System.out.println(sql1);
+			 sql = sql + " and experience like'%"+ exp+"%' ";
+System.out.println(3+":"+sql);
+System.out.println(sql);
 
-if(sql1.length()>0){
+/* if(sql1.length()>0){
 sql1=sql1.substring(0,sql1.lastIndexOf("AND"));
-sql=sql+" where "+sql1;
-}
+sql=sql+" where "+sql1; 
+}*/
 System.out.println("sql="+sql);
 PreparedStatement smt=con.prepareStatement(sql);
 /* smt.setString(1,location);
