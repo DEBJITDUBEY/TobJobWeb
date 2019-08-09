@@ -28,6 +28,8 @@ ResultSet rs=smt.executeQuery();
 while(rs.next()) {
    String jobid = rs.getString(1);
    String joburl="Applicant.jsp?jobid="+jobid;
+   String jobur2="RemoveJobs.jsp?jobid="+jobid;
+   String jobur3="EditJobs.jsp?jobid="+jobid;
 %>
    <div class="col-sm-4">
     <label><%=rs.getString(4) %></label>
@@ -38,11 +40,11 @@ while(rs.next()) {
    
   </div>
    <div class="col-sm-2">
-  <label><a href="<%=joburl%>">Remove Jobs</a></label>
+  <label><a href="<%=jobur2%>">Remove Jobs</a></label>
     <br>
     </div>
     <div class="col-sm-2">
-   <label><a href="<%=joburl%>">Edit Jobs</a></label>
+   <label><a href="<%=jobur3%>">Edit Jobs</a></label>
     </div>
     <div class="col-sm-2">
     <label><a href="<%=joburl%>">View Applicants</a></label>

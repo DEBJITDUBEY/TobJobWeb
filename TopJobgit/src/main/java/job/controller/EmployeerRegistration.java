@@ -18,6 +18,7 @@ import javax.servlet.http.Part;
 import job.dao.EmployeerDaoImpl;
 import job.model.Employeer;
 
+
 /**
  * Servlet implementation class EmployeeRegistration
  */
@@ -41,8 +42,7 @@ public class EmployeerRegistration extends HttpServlet {
 		System.out.println(email+"email");
 		String pwd=request.getParameter("pwd");
 		System.out.println(pwd+"pwd");
-		String rpwd=request.getParameter("rpwd");
-		System.out.println(rpwd+"rpwd");
+		
 		String mob=request.getParameter("mob");
 		System.out.println(mob+"mob");
 		String Rname=request.getParameter("Rname");
@@ -72,7 +72,7 @@ public class EmployeerRegistration extends HttpServlet {
 		String c4="C"+(int)(Math.random()*100)+(int)(Math.random()*100)+(int)(Math.random()*100);    //request.getParameter("c4");
 		System.out.println(c4+"c4");
 		
-		Employeer  employeer = new Employeer(email, pwd, rpwd, mob, Rname, Cname, industryname, designation, type, GSTNO, o1, c1, p1, co1, on1, c2, c4);
+		Employeer  employeer = new Employeer(email, pwd, mob, Rname, Cname, industryname, designation, type, GSTNO, o1, c1, p1, co1, on1, c2, c4);
 		
 		String serverPath = "d:/imgEmployer/";
 	    final Part filePart = request.getPart("p2");
@@ -96,7 +96,18 @@ public class EmployeerRegistration extends HttpServlet {
 		      EmployeerDaoImpl employeerDaoImpl = new EmployeerDaoImpl();
 		      flag= employeerDaoImpl.makeEmployerRegistration(employeer);
 		      
-		  
+		  System.out.println(flag);
+			if(flag==true) {
+				RequestDispatcher rd = request.getRequestDispatcher("scheme.jsp");
+				rd.include(request, response);
+				writer.println("Employeer is registered");
+				}
+				else {
+					RequestDispatcher rd = request.getRequestDispatcher("EmployeerRegistration.jsp");
+					rd.include(request, response);
+					writer.println("Employeer is not registered");
+				}
+			
 		    } 
 	        catch (Exception e) {
 		      System.out.println("error2:"+e);
@@ -113,16 +124,6 @@ public class EmployeerRegistration extends HttpServlet {
 		        writer.close();
 		      }
 		    }
-		if(flag==true) {
-		RequestDispatcher rd = request.getRequestDispatcher("EmployeerRegistration.jsp");
-		rd.include(request, response);
-		writer.println("Employeer is registered");
-		}
-		else {
-			RequestDispatcher rd = request.getRequestDispatcher("EmployeerRegistration.jsp");
-			rd.include(request, response);
-			writer.println("Employeer is not registered");
-		}
 		
 	}
 

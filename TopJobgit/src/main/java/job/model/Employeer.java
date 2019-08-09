@@ -4,7 +4,7 @@ public class Employeer {
 	private String email;
 	
 	private String pwd;
-	private String rpwd;
+	
 	private String mobile;
 	private String Registername;
 	private      String Companyname;
@@ -31,12 +31,6 @@ public class Employeer {
 	}
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
-	}
-	public String getRpwd() {
-		return rpwd;
-	}
-	public void setRpwd(String rpwd) {
-		this.rpwd = rpwd;
 	}
 	public String getMobile() {
 		return mobile;
@@ -122,20 +116,19 @@ public class Employeer {
 	public void setEmpid(String empid) {
 		this.empid = empid;
 	}
-	public Employeer(String email, String pwd, String rpwd, String mobile, String registername, String companyname,
+	public Employeer(String email, String pwd, String mobile, String registername, String companyname,
 			String industryname, String designation, String type, String gSTNO, String officeAdrress, String city,
 			String pin, String country, String officenumber, String govid, String empid) {
 		super();
 		this.email = email;
 		this.pwd = pwd;
-		this.rpwd = rpwd;
 		this.mobile = mobile;
 		Registername = registername;
 		Companyname = companyname;
 		this.industryname = industryname;
 		this.designation = designation;
 		this.type = type;
-		GSTNO = gSTNO;
+		this.GSTNO = gSTNO;
 		this.officeAdrress = officeAdrress;
 		this.city = city;
 		this.pin = pin;
@@ -146,6 +139,9 @@ public class Employeer {
 	}
 	public Employeer() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
+	
+	
 	
 }

@@ -15,7 +15,7 @@ public class EmployeerDaoImpl {
 		boolean status=false;
 		try {
 			Connection con= new DbConnection().getConnection();
-			PreparedStatement smt = con.prepareStatement("insert into employeer values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement smt = con.prepareStatement("insert into employeer (email,pwd,mob,Rname,Cname,industryname,designation,employeertype,GSTNO,office_address,city,pin,country,office_number,Government_id,Employee_id_number) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			
 			smt.setString(1,employeer.getEmail());
 			smt.setString(2,employeer.getPwd());

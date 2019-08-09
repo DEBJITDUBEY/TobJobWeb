@@ -109,10 +109,7 @@ button:hover {
     <label for="pwd">Password:</label>
     <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
    </div>
-    <div class="form-group">
-    <label for="pwd">RE-Password:</label>
-    <input type="password" class="form-control" id="rpwd" name="rpwd" placeholder="Enter password">
-   </div>
+   
 <div class="form-group">
    <label >MOBILE-NO:</label>
    <input type="text" class="form-control" id="mob" name="mob" placeholder="Enter email">

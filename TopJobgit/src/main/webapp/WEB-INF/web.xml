@@ -100,6 +100,18 @@
   	<description></description>
   	<servlet-class>job.controller.SchemeBuy</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>RemoveJobs</servlet-name>
+  	<display-name>RemoveJobs</display-name>
+  	<description></description>
+  	<servlet-class>job.controller.RemoveJobs</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>EditJobs</servlet-name>
+  	<display-name>EditJobs</display-name>
+  	<description></description>
+  	<servlet-class>job.controller.EditJobs</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>EmployeerLogin</servlet-name>
   	<url-pattern>/EmployeerLogin</url-pattern>
@@ -163,5 +175,13 @@
   <servlet-mapping>
   	<servlet-name>SchemeBuy</servlet-name>
   	<url-pattern>/SchemeBuy</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RemoveJobs</servlet-name>
+  	<url-pattern>/RemoveJobs</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EditJobs</servlet-name>
+  	<url-pattern>/EditJobs</url-pattern>
   </servlet-mapping>
 </web-app>

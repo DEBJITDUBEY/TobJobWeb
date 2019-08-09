@@ -38,12 +38,6 @@
  	<a href="EmployeerViewJobs.jsp" >
  View Jobs </a></div>
  <div class="col-sm-1">
- 	<a href="Applicant.jsp" >
- Applicant</a></div>
- <div class="col-sm-1">
- 	<a href="Logout.jsp" >ShortListed</a></div>
- <div class="col-sm-1"></div>
- <div class="col-sm-1">
  	 <a href="scheme.jsp" >Schemes</a>
  </div>
  <div class="col-sm-1">
@@ -51,9 +45,6 @@
  </div>
  <div class="col-sm-1">
   <a href="Logout.jsp" >Edit Proofile</a>
-</div>
-<div class="col-sm-1">
-  <a href="" >Contact Us</a>
 </div>
 <div class="col-sm-1">
   <a href="EmployerLogout">Logout</a>
