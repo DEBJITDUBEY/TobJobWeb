@@ -94,6 +94,12 @@
   	<description></description>
   	<servlet-class>job.controller.AAA</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>SchemeBuy</servlet-name>
+  	<display-name>SchemeBuy</display-name>
+  	<description></description>
+  	<servlet-class>job.controller.SchemeBuy</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>EmployeerLogin</servlet-name>
   	<url-pattern>/EmployeerLogin</url-pattern>
@@ -153,5 +159,9 @@
   <servlet-mapping>
   	<servlet-name>AAA</servlet-name>
   	<url-pattern>/AAA</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SchemeBuy</servlet-name>
+  	<url-pattern>/SchemeBuy</url-pattern>
   </servlet-mapping>
 </web-app>
