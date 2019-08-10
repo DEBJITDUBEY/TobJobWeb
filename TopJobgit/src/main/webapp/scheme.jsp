@@ -17,7 +17,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<%@include file="Schemeheader.jsp" %>
 <div class="row">
 		<div class="col-sm-2">Package Name</div>
 		<div class="col-sm-4">Package Facility</div>
@@ -26,13 +26,14 @@
 </div>
 <br>
 <%
+String email=request.getParameter("email");
 Class.forName("com.mysql.cj.jdbc.Driver"); 
 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jobdb?useSSL=false","root","myroot");
 PreparedStatement smt=con.prepareStatement("select * from Scheme");
 ResultSet rs=smt.executeQuery();
 while(rs.next()) {
     String scid=rs.getString(1)	;
-    String scurl= "SchemeBuy.jsp?scid="+scid;
+    String scurl= "SchemeBuy.jsp?scid="+scid+"&email="+email;
  %>
     	<div class="row">
 		<div class="col-sm-2"><%=rs.getString(2) %></div>

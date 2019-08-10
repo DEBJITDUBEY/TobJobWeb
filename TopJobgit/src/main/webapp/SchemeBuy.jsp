@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="EmployeerMenubar.jsp" %>
+<%@include file="Schemeheader.jsp" %>
     <%
         String scid=request.getParameter("scid");
+    String email=request.getParameter("email");
     %>
     
 <div class="row">
@@ -39,7 +40,9 @@
     <input type="text" class="form-control" id="Ncard" name="Ncard" placeholder="Name On Card" style="width: 400px">
   </div>
   <input type="hidden" name="scid" value="<%=scid%>">
-  <input type="submit" name="">
+  <input type="hidden" name="email" value="<%=email%>">
+  
+  <input type="submit">
     </form>
 </div>
 <div class="col-sm-4"></div>
