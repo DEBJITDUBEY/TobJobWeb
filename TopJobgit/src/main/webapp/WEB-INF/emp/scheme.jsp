@@ -1,3 +1,4 @@
+<%@page import="job.dbcon.DbConnection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@page import="java.sql.ResultSet"%>
@@ -27,8 +28,7 @@
 <br>
 <%
 String email=request.getParameter("email");
-Class.forName("com.mysql.cj.jdbc.Driver"); 
-Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jobdb?useSSL=false","root","myroot");
+Connection con=new DbConnection().getConnection();
 PreparedStatement smt=con.prepareStatement("select * from Scheme");
 ResultSet rs=smt.executeQuery();
 while(rs.next()) {

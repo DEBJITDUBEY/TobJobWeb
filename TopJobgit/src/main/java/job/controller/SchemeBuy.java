@@ -8,10 +8,15 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import job.dao.EmployeerDaoImpl;
+import job.dao.SchemesDaoImpl;
+import job.model.Schemes;
 
 /**
  * Servlet implementation class SchemeBuy
@@ -34,40 +39,17 @@ public class SchemeBuy extends HttpServlet {
 		String sid=request.getParameter("scid");
 		String email=request.getParameter("email");
 		
-		try {
-			int fee,duration = 0;
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jobdb?useSSL=false","root","myroot");
-			PreparedStatement smt=con.prepareStatement("select * from Scheme where schemeid=?");
-			smt.setString(1, sid);
-			ResultSet rs=smt.executeQuery();
-			if(rs.next()) {
-				 fee=Integer.parseInt(rs.getString(5));
-				 duration=Integer.parseInt(rs.getString(3));
-				
-				System.out.println(fee);
-				System.out.println(duration);
+		Schemes schemes = new SchemesDaoImpl().getSechemeById(sid);
+		if(schemes!=null) {
+			boolean result = new EmployeerDaoImpl().makeEmployerSchemeRegistration(email, schemes);
+			if(result)
+			   response.sendRedirect("EmployeerLogin.jsp");
+			else {
+				RequestDispatcher rd = request.getRequestDispatcher("SchemeBuy.jsp");
+				rd.forward(request, response);
 			}
-			
-			String sql="update employeer set Scheme_id=?,Scheme_Duration=?,Prchasing_Date=current_date,End_Date=adddate(current_date,interval "+ duration +" day),status_scheme='T' where email=?";
-			PreparedStatement smt1=con.prepareStatement(sql);
-			smt1.setString(1,sid);
-			smt1.setInt(2,duration);
-			//smt.setInt(3, duration);
-			SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
-			Date curdate=new Date();
-			
-			//smt.setString(1,sdf.format(curdate));
-			smt1.setString(3,email);
-			int row= smt1.executeUpdate();
-			System.out.println(row);
-			con.close();
-			
-		} catch (Exception e) {
-			System.out.println(e);
-			
-		} 
-		
-			
+		}
+				
 		}
 	}
 

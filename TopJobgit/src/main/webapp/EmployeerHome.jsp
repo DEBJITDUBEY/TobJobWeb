@@ -61,7 +61,7 @@
 </head>
 <body>
 <div>
-  <jsp:include page="EmployeerMenubar.jsp"/>
+  <jsp:include page="/WEB-INF/emp/EmployeerMenubar.jsp"/>
   </div>
   
 <div>

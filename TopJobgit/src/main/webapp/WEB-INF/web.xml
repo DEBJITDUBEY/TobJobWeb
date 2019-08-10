@@ -1,116 +1,88 @@
-<!DOCTYPE web-app PUBLIC
+<!-- <!DOCTYPE web-app PUBLIC
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
-    <display-name>Archetype Created Web Application</display-name>
+ "http://java.sun.com/dtd/web-app_2_3.dtd" > -->
+ 
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" 
+         version="2.5" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"> 
+         
+  <display-name>Archetype Created Web Application</display-name>
   <servlet>
   	<servlet-name>EmployeerLogin</servlet-name>
-  	<display-name>EmployeerLogin</display-name>
-  	<description></description>
   	<servlet-class>job.controller.EmployeerLogin</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>EmployeerRegistration</servlet-name>
-  	<display-name>EmployeerRegistration</display-name>
-  	<description></description>
   	<servlet-class>job.controller.EmployeerRegistration</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>EmployerLogout</servlet-name>
-  	<display-name>EmployerLogout</display-name>
-  	<description></description>
   	<servlet-class>job.controller.EmployerLogout</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>JobSeakers</servlet-name>
-  	<display-name>JobSeakers</display-name>
-  	<description></description>
   	<servlet-class>job.controller.JobSeakers</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>JobSeekerLogin</servlet-name>
-  	<display-name>JobSeekerLogin</display-name>
-  	<description></description>
   	<servlet-class>job.controller.JobSeekerLogin</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>JobPost</servlet-name>
-  	<display-name>JobPost</display-name>
-  	<description></description>
   	<servlet-class>job.controller.JobPost</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>ApplyJob</servlet-name>
-  	<display-name>ApplyJob</display-name>
-  	<description></description>
   	<servlet-class>job.controller.ApplyJob</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>AdminLogin</servlet-name>
-  	<display-name>AdminLogin</display-name>
-  	<description></description>
   	<servlet-class>job.controller.AdminLogin</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>FileDownload</servlet-name>
-  	<display-name>FileDownload</display-name>
-  	<description></description>
   	<servlet-class>job.controller.FileDownload</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>ApplyJobFinal</servlet-name>
-  	<display-name>ApplyJobFinal</display-name>
-  	<description></description>
   	<servlet-class>job.controller.ApplyJobFinal</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>JobSeekerLogout</servlet-name>
-  	<display-name>JobSeekerLogout</display-name>
-  	<description></description>
   	<servlet-class>job.controller.JobSeekerLogout</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>AllowJobs</servlet-name>
-  	<display-name>AllowJobs</display-name>
-  	<description></description>
   	<servlet-class>job.controller.AllowJobs</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>DownloadResume</servlet-name>
-  	<display-name>DownloadResume</display-name>
-  	<description></description>
   	<servlet-class>job.controller.DownloadResume</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>ShortListed</servlet-name>
-  	<display-name>ShortListed</display-name>
-  	<description></description>
   	<servlet-class>job.controller.ShortListed</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>AAA</servlet-name>
-  	<display-name>AAA</display-name>
-  	<description></description>
   	<servlet-class>job.controller.AAA</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>SchemeBuy</servlet-name>
-  	<display-name>SchemeBuy</display-name>
-  	<description></description>
   	<servlet-class>job.controller.SchemeBuy</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>RemoveJobs</servlet-name>
-  	<display-name>RemoveJobs</display-name>
-  	<description></description>
   	<servlet-class>job.controller.RemoveJobs</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>EditJobs</servlet-name>
-  	<display-name>EditJobs</display-name>
-  	<description></description>
   	<servlet-class>job.controller.EditJobs</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>EmpJobPost</servlet-name>
+  	<servlet-class>job.controller.EmpJobPost</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>EmployeerLogin</servlet-name>
@@ -184,4 +156,17 @@
   	<servlet-name>EditJobs</servlet-name>
   	<url-pattern>/EditJobs</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EmpJobPost</servlet-name>
+  	<url-pattern>/emp/EmpJobPost</url-pattern>
+  </servlet-mapping>
+  
+<filter>
+ <filter-name>EmployeerFilter</filter-name>
+ <filter-class>job.model.EmployeerFilter</filter-class>
+ </filter>
+<filter-mapping>
+<filter-name>EmployeerFilter</filter-name>
+<url-pattern>/emp/*</url-pattern>
+</filter-mapping>  
 </web-app>
