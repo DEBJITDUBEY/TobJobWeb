@@ -67,14 +67,11 @@
  	<a href="Logout.jsp" >
  Companys</a>
  </div>
- <div class="col-sm-2">
- 	<a href="Logout.jsp" >
-  International Jobs</a></div>
+ <
  <div class="col-sm-1">
  	<a href="Logout.jsp" >
- Govt Jobs</a></div>
- <div class="col-sm-1">
- 	<a href="Logout.jsp" >Private Jobs</a></div>
+ Generate CV</a></div>
+ 
  <div class="col-sm-1"></div>
  <div class="col-sm-1">
  	 <a href="JobSeekerViewProfile.jsp" >View Proofile</a>
