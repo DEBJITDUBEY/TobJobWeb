@@ -30,6 +30,7 @@ while(rs.next()) {
    String joburl="Applicant.jsp?jobid="+jobid;
    String jobur2="RemoveJobs.jsp?jobid="+jobid;
    String jobur3="EditJobs.jsp?jobid="+jobid;
+   String jobur4="ShortListed.jsp?jobid="+jobid;
 %>
    <div class="col-sm-4">
     <label><%=rs.getString(4) %></label>
@@ -50,7 +51,7 @@ while(rs.next()) {
     <label><a href="<%=joburl%>">View Applicants</a></label>
   </div>
   <div class="col-sm-2">
-    <label><a href="<%=joburl%>">View ShortListed</a></label>
+    <label><a href="<%=jobur4%>">View ShortListed</a></label>
   </div>
   <%
   }
