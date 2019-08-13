@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import job.dbcon.DbConnection;
 import job.model.Employeer;
@@ -95,4 +97,36 @@ public class JobseakerDaoImpl {
 		return status;
 	}
 
+	
+	public Jobseaker UserCV(String emailId) {
+		
+		Jobseaker jobseaker=new Jobseaker();
+		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+		try {
+			Connection con= new DbConnection().getConnection();
+			PreparedStatement smt = con.prepareStatement("select * from Jobseaker where email=?");
+			smt.setString(1,emailId);
+			ResultSet rs = smt.executeQuery();
+		   if(rs.next()) {
+			  jobseaker.setName(rs.getString(1));
+			  jobseaker.setEmail(rs.getString(2));
+			  jobseaker.setPassword(rs.getString(3));
+			  jobseaker.setDate_of_birth(sdf.parse(rs.getString(4)));
+			  jobseaker.setGender(rs.getString(5));
+			  jobseaker.setMobile_no(rs.getString(6));
+			  jobseaker.setGov_proof_id(rs.getString(7));
+			  jobseaker.setId_details(rs.getString(8));
+			  jobseaker.setCity(rs.getString(10));
+			  
+			   }
+		   }
+		catch(Exception e) {
+			
+		}
+		
+		return jobseaker;
+	}
+		
 }
+
+

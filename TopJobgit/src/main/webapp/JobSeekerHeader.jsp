@@ -1,3 +1,5 @@
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -57,6 +59,7 @@
 
 
 <body>
+
 <div>
    <a href="index.html"> <img src="Image/jobslogo.jpg" style="width: 100px; height: 100px;"></a>
   </div>
@@ -69,7 +72,7 @@
  </div>
  <
  <div class="col-sm-1">
- 	<a href="Logout.jsp" >
+ 	<a href="Generat" >
  Generate CV</a></div>
  
  <div class="col-sm-1"></div>

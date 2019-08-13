@@ -84,6 +84,13 @@
   	<servlet-name>EmpJobPost</servlet-name>
   	<servlet-class>job.controller.EmpJobPost</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>Generat</display-name>
+  	<servlet-name>Generat</servlet-name>
+  	<servlet-class>job.controller.Generat</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>EmployeerLogin</servlet-name>
   	<url-pattern>/EmployeerLogin</url-pattern>
@@ -159,6 +166,10 @@
   <servlet-mapping>
   	<servlet-name>EmpJobPost</servlet-name>
   	<url-pattern>/emp/EmpJobPost</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Generat</servlet-name>
+  	<url-pattern>/Generat</url-pattern>
   </servlet-mapping>
   
 <filter>
