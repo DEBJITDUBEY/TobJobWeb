@@ -67,8 +67,8 @@
    <div class="row" style="background-color:white">
    	<div class="col-sm-2"></div>
  <div class="col-sm-1">
- 	<a href="Logout.jsp" >
- Companys</a>
+ 	<a href="Apply_Job_Status" >
+ Apply JOB STATUS</a>
  </div>
  <
  <div class="col-sm-1">

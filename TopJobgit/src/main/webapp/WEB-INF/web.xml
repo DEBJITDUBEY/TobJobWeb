@@ -91,6 +91,13 @@
   	<servlet-name>Generat</servlet-name>
   	<servlet-class>job.controller.Generat</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>Apply_Job_Status</display-name>
+  	<servlet-name>Apply_Job_Status</servlet-name>
+  	<servlet-class>job.controller.Apply_Job_Status</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>EmployeerLogin</servlet-name>
   	<url-pattern>/EmployeerLogin</url-pattern>
@@ -170,6 +177,10 @@
   <servlet-mapping>
   	<servlet-name>Generat</servlet-name>
   	<url-pattern>/Generat</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Apply_Job_Status</servlet-name>
+  	<url-pattern>/Apply_Job_Status</url-pattern>
   </servlet-mapping>
   
 <filter>
