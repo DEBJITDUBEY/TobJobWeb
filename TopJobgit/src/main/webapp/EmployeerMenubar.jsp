@@ -1,3 +1,4 @@
+<%@page import="job.dao.EmployeerDaoImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -16,7 +17,17 @@
 	<div class="col-sm-4">
     <a href="index.jsp"> <img src="Image/jobslogo.jpg" style="width: 100px; height: 100px;"></a>
     </div>
-    <div class="col-sm-6"></div>
+     <%
+    String email=(String)session.getAttribute("emailid");
+    EmployeerDaoImpl employeerDaoImpl=new EmployeerDaoImpl();
+    String s=employeerDaoImpl.getDaysRemain(email);
+    System.out.println(s);
+    
+    %>
+    <div class="col-sm-6">
+      <label><%=s %>days Remaing</label>
+    
+    </div>
     <div class="col-sm-2">
     <%
   String url="FileDownload"; 

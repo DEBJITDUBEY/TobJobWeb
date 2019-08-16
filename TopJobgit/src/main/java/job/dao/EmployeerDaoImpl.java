@@ -250,4 +250,23 @@ public String makeUsersLogin(Employeer employer) {
 			}
 			
 	 }
+	 
+	 public String getDaysRemain(String email) {
+		 String days = null;
+	 
+		 try {
+				
+				Connection con= new DbConnection().getConnection();
+				PreparedStatement smt = con.prepareStatement("SELECT DATEDIFF(End_Date,current_date())from employeer where email=?");
+				smt.setString(1, email);
+				ResultSet result = smt.executeQuery();   
+				 if(result.next()){
+					 days=result.getString(1);
+				 }
+		 
+	 }catch(Exception e) {
+		 System.out.println(e);
+	 }
+	  return days;
+}
 }

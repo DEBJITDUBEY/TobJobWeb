@@ -51,10 +51,26 @@ public class EmployeerLogin extends HttpServlet {
 			session.setAttribute("emailid", emailid);
 			session.setAttribute("empid", empid);
 			//session.setAttribute("c4", status);
-			RequestDispatcher rd = request.getRequestDispatcher("EmployeerHome.jsp");
-			PrintWriter out = response.getWriter();
-			rd.include(request, response);
-			out.println("<h3>Welcome.......</h3>");
+		
+			
+			EmployeerDaoImpl employeerDaoImpl=new EmployeerDaoImpl();
+			int s=Integer.parseInt(employeerDaoImpl.getDaysRemain(emailid));
+			
+			if(s<0) {
+				RequestDispatcher rd1 = request.getRequestDispatcher("scheme.jsp?email="+emailid);
+				PrintWriter out1 = response.getWriter();
+				rd1.include(request, response);
+				out1.println("<h3>Scheme Expire.......</h3>");
+				
+			}
+			else {
+				RequestDispatcher rd = request.getRequestDispatcher("EmployeerHome.jsp");
+				PrintWriter out = response.getWriter();
+				rd.include(request, response);
+				out.println("<h3>Welcome.......</h3>");
+				
+			}
+			
 		}
 		
 		else {

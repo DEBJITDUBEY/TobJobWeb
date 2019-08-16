@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import job.dao.EmployeerDaoImpl;
+import job.model.Mail;
+
 
 /**
  * Servlet implementation class ShortListed
@@ -31,12 +34,24 @@ public class ShortListed extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			String appid=request.getParameter("appid");
+			String email=request.getParameter("email");
 			Class.forName("com.mysql.cj.jdbc.Driver"); 
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jobdb?useSSL=false","root","myroot");
 			PreparedStatement smt=con.prepareStatement("update applyjob set status='Yes' where app_id=?");
 			smt.setString(1,appid);
 			int rs=smt.executeUpdate();
+			
 			con.close();
+			if(rs>0) {
+				String body="Congrats !!!!! You are shortlisted for Application Id:"+appid;
+				String subject="ShortListed";
+				Mail mail=new Mail();
+				mail.setRecipients(email);
+				mail.setBody(body);
+				mail.setSubject(subject);
+				EmployeerDaoImpl employeerDaoImpl=new EmployeerDaoImpl();
+				employeerDaoImpl.MailSender(mail);
+			}
 			response.sendRedirect("EmployeerViewJobs.jsp");
 			
 		}

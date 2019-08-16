@@ -24,16 +24,18 @@ PreparedStatement smt=con.prepareStatement("select jobseaker.*, applyjob.status,
 " where jobseaker.email=applyjob.job_seaker_id and applyjob.job_id=?");
 smt.setString(1,jobid);
 ResultSet rs=smt.executeQuery();
+String email=null;
 while(rs.next()) {
       	String url1="DownloadResume?id_details="+rs.getString(8);
     	String status = rs.getString(29);  
     	int appid=rs.getInt(31);
+    	email=rs.getString(2);
 %>  	
        <div>Name:
        <label><%=rs.getString(1) %></label>
        <br>
        Email:
-       <label><%=rs.getString(2) %></label>
+       <label><%=email%></label>
        <br>
        Gender:
        <label><%=rs.getString(5) %></label>
@@ -48,6 +50,7 @@ while(rs.next()) {
        %>
            <form action="ShortListed" method="post">  
              <input type="hidden" name="appid" value="<%=appid%>">
+             <input type="hidden" name="email" value="<%=email%>">
             <!--  <a href="shortListed" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-ok"></span> Shortlisted  </a> -->
             <input type="submit" value="ShortList">
            </form>  
