@@ -17,6 +17,7 @@ import javax.servlet.http.Part;
 
 import job.dao.EmployeerDaoImpl;
 import job.model.Employeer;
+import job.model.Mail;
 
 
 /**
@@ -100,7 +101,15 @@ public class EmployeerRegistration extends HttpServlet {
 			if(flag==true) {
 				RequestDispatcher rd = request.getRequestDispatcher("scheme.jsp");
 				rd.include(request, response);
+				
 				writer.println("Employeer is registered");
+				 String subject="Registration succesfully";
+				 String body="You are successfully Register";
+				Mail mail=new Mail();
+				mail.setRecipients(email);
+				mail.setBody(body);
+				mail.setSubject(subject);
+				employeerDaoImpl.MailSender(mail);
 				}
 				else {
 					RequestDispatcher rd = request.getRequestDispatcher("EmployeerRegistration.jsp");

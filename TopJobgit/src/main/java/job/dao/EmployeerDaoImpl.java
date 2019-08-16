@@ -6,9 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import job.dbcon.DbConnection;
 import job.model.Employeer;
+import job.model.Mail;
 import job.model.Schemes;
 
 
@@ -116,5 +121,133 @@ public String makeUsersLogin(Employeer employer) {
 		return status;
 	}
 
+  public void MailSender(Mail mail) {
+	  final String username = "topjobasansol@gmail.com";
+      final String password = "1234@5678";
 
+      Properties prop = new Properties();
+		prop.put("mail.smtp.host", "smtp.gmail.com");
+      prop.put("mail.smtp.port", "587");
+      prop.put("mail.smtp.auth", "true");
+      prop.put("mail.smtp.starttls.enable", "true");
+      
+      Session session = Session.getInstance(prop,
+              new javax.mail.Authenticator() {
+                  protected PasswordAuthentication getPasswordAuthentication() {
+                      return new PasswordAuthentication(username, password);
+                  }
+              });
+
+      try {
+
+          Message message = new MimeMessage(session);
+          message.setFrom(new InternetAddress("from@gmail.com"));
+          message.setRecipients(
+                  Message.RecipientType.TO,
+                  InternetAddress.parse(mail.getRecipients())
+          );
+          message.setSubject(mail.getSubject());
+          message.setText(mail.getBody());
+
+          Transport.send(message);
+
+          System.out.println("Done");
+
+      } catch (MessagingException e) {
+          e.printStackTrace();
+      }
+  }
+	  public boolean cheakmailId(String email) {
+		  boolean status=false;
+		  try {
+			
+				Connection con= new DbConnection().getConnection();
+				PreparedStatement smt = con.prepareStatement("select * from employeer where email=?");
+				smt.setString(1,email);
+				ResultSet result = smt.executeQuery();
+				if(result.next())
+					status=true;
+				
+				con.close();
+				}
+			catch(Exception e) {
+				System.out.println(e);  
+				}
+			return status;
+	  
+	  
+  }
+	  
+	  public void creatpassword(String email,String pwd) {
+		  try {
+				Connection con= new DbConnection().getConnection();
+				PreparedStatement smt = con.prepareStatement("insert into precover (email,pwd)values (?,?)");
+				smt.setString(1,email);
+				smt.setString(2,pwd);
+		  
+				int result = smt.executeUpdate();
+		  }
+		  catch(Exception e) {
+			  
+		  }
+		  
+		  
+	  }
+	  
+	
+	 public boolean CheckRandomPassword(String email,String pwd) {
+		 boolean status=false;
+		 try {
+				Connection con= new DbConnection().getConnection();
+				PreparedStatement smt = con.prepareStatement("select * from precover where email=? and pwd=?");
+				smt.setString(1,email);
+				smt.setString(2, pwd);
+				ResultSet result = smt.executeQuery();
+				if(result.next())
+				status=true;
+		 }
+			catch(Exception e) {
+				System.out.println(e);  
+				}
+	 
+	  return status;
+	  
+	  
+}
+	 public boolean setNeWPassword(String email,String pwd) {
+		 boolean status=false;
+	 
+			try {
+				
+				Connection con= new DbConnection().getConnection();
+		 String sql="update employeer set pwd=? where email=?";
+			PreparedStatement smt=con.prepareStatement(sql);
+			smt.setString(1,pwd);
+			smt.setString(2,email);
+			int row= smt.executeUpdate();
+			if(row>0) {
+		 status=true;
+			}
+	 }
+			catch(Exception e) {
+				
+			}
+			return status;
+}
+	 public void dltRpass(String email) {
+		 try {
+				
+				Connection con= new DbConnection().getConnection();
+		 String sql="delete from precover where email=?";
+			PreparedStatement smt=con.prepareStatement(sql);
+			smt.setString(1,email);
+			int row= smt.executeUpdate();
+		
+			}
+	 
+			catch(Exception e) {
+				System.out.println(e);
+			}
+			
+	 }
 }

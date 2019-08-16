@@ -20,6 +20,7 @@ import javax.servlet.http.Part;
 import job.dao.EmployeerDaoImpl;
 import job.dao.JobseakerDaoImpl;
 import job.model.Jobseaker;
+import job.model.Mail;
 
 /**
  * Servlet implementation class JobSeakers
@@ -155,6 +156,14 @@ public class JobSeakers extends HttpServlet {
 				      }
 			    }
 		    System.out.println("success");
+		    String subject="Registration succesfully";
+			 String body="You are successfully Register";
+			Mail mail=new Mail();
+			mail.setRecipients(email);
+			mail.setBody(body);
+			mail.setSubject(subject);
+			EmployeerDaoImpl employeerDaoImpl=new EmployeerDaoImpl();
+			employeerDaoImpl.MailSender(mail);
 	 }
 	 else
 		 System.out.println("fail");

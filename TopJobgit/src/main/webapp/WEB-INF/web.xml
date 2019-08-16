@@ -98,6 +98,27 @@
   	<servlet-name>Apply_Job_Status</servlet-name>
   	<servlet-class>job.controller.Apply_Job_Status</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>EmployeerPasswordRecovery</display-name>
+  	<servlet-name>EmployeerPasswordRecovery</servlet-name>
+  	<servlet-class>job.controller.EmployeerPasswordRecovery</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>EmployeerPasswordRecovery2</display-name>
+  	<servlet-name>EmployeerPasswordRecovery2</servlet-name>
+  	<servlet-class>job.controller.EmployeerPasswordRecovery2</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>setPassword</display-name>
+  	<servlet-name>setPassword</servlet-name>
+  	<servlet-class>job.controller.setPassword</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>EmployeerLogin</servlet-name>
   	<url-pattern>/EmployeerLogin</url-pattern>
@@ -181,6 +202,18 @@
   <servlet-mapping>
   	<servlet-name>Apply_Job_Status</servlet-name>
   	<url-pattern>/Apply_Job_Status</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EmployeerPasswordRecovery</servlet-name>
+  	<url-pattern>/EmployeerPasswordRecovery</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EmployeerPasswordRecovery2</servlet-name>
+  	<url-pattern>/EmployeerPasswordRecovery2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>setPassword</servlet-name>
+  	<url-pattern>/setPassword</url-pattern>
   </servlet-mapping>
   
 <filter>

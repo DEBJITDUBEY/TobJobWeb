@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import job.dbcon.DbConnection;
+import job.model.Applicatns;
 import job.model.Employeer;
 import job.model.Jobseaker;
 
@@ -126,7 +127,33 @@ public class JobseakerDaoImpl {
 		
 		return jobseaker;
 	}
+	public List ApplyStatus(String emailId) {
+		List <Applicatns> alist=new ArrayList<Applicatns>();
+		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
 		
+		try {
+			Connection con= new DbConnection().getConnection();
+			PreparedStatement smt = con.prepareStatement("select aj.job_id,aj.Job_seaker_id,aj.Apply_date,aj.status,j.Job_title,j.Job_descriptions from jobs j inner join applyjob aj on j.Job_id=aj.job_id where aj.Job_seaker_id=? order by aj.Apply_date");
+			smt.setString(1,emailId);
+			ResultSet rs = smt.executeQuery();
+		   while(rs.next()) {
+			   Applicatns applicatns=new Applicatns();
+		     applicatns.setJobId(rs.getString(1));
+		     applicatns.setJobSeakerId(rs.getString(2));
+		     applicatns.setApplyDate(rs.getDate(3));
+		     applicatns.setStatus(rs.getString(4));
+		     applicatns.setJobTitle(rs.getString(5));
+		     applicatns.setJobDescription(rs.getString(6));
+		    alist.add(applicatns);
+		   }
+		   
+		    return alist;
+		
+	}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		return alist;
 }
-
+}
 

@@ -47,13 +47,13 @@
 			<input type="Password" class="form-control" id="pwd" name="pwd" placeholder="Enter Password">
 		</div>
 		<center>
-		<button class="btn btn-success" >Login</button>&nbsp&nbsp
-		
-		<button class="btn btn-info navbar-btn">New?Register</button>
+		<button class="btn btn-success" >Login</button>
 		</center>
 	</form>
-	<center>
-	<button class="btn btn-danger">forget password</button>
+		<center>
+	<button class="btn btn-info navbar-btn">New?Register</button>
+
+	<a href="EmployeerPasswordRecovery.jsp" class="btn btn-danger" class="">forget password</a>
 	</center>
 </div>
 <div class="col-sm-4">
