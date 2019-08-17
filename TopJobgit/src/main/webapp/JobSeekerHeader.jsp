@@ -71,17 +71,17 @@
  Applied Job Status</a>
  </div>
  
- <div class="col-sm-1">
+ <div class="col-sm-2">
  	<a href="Generat" >
  Generate CV</a></div>
  
- <div class="col-sm-1">
+ <div class="col-sm-2">
  	 <a href="JobSeekerViewProfile.jsp" >View Profile</a>
  </div>
- <div class="col-sm-1">
+ <div class="col-sm-2">
   <a href="Logout.jsp" >Edit Profile</a>
 </div>
-<div class="col-sm-1">
+<div class="col-sm-2">
   <a href="JobSeekerLogout">Logout</a>
 </div>
    </div>
