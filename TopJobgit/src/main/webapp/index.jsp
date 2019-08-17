@@ -25,9 +25,9 @@
 $(document).ready(function(){ 
 
 	 
-$('#form').submit(function(e){
+$('#form').submit(function(){
 
-e.preventDefault();
+//e.preventDefault();
 $(".error").remove();
 var emailstr = $('#email').val();
 var passwrdstr = $('#pwd').val();

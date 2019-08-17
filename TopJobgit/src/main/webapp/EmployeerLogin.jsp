@@ -21,11 +21,9 @@
 
 
 $(document).ready(function(){ 
-
 	 
-$('#form').submit(function(e){
-
-e.preventDefault();
+$("form").submit(function() { 
+//e.preventDefault();
 $(".error").remove();
 var emailstr = $('#email').val();
 var passwrdstr = $('#pwd').val();
@@ -44,6 +42,8 @@ else {
 if(passwrdstr.length<1){
     $('#pwd').after('<span class="error">Password is required</span>'); count++;
    }
+   
+ 
   if(count==0)
 	  return true;
   else
@@ -94,8 +94,8 @@ if(passwrdstr.length<1){
 			<div id="pwderr"></div>
 		</div>
 		<center>
-		<!-- <button class="btn btn-success" id="submitbtn">Login</button> -->
-		<button type="submit" id="button" class="btn btn-success">Login</button>
+		<button type="submit" class="btn btn-success" id="submitbtn">Login</button> 
+		<!-- <input type="submit" id="button" > -->
 		</center>
 	</form>
 		<center>
@@ -107,6 +107,7 @@ if(passwrdstr.length<1){
 <div class="col-sm-4">
   </div>
 
+</div>
 </div>
 </body>
 </html>

@@ -66,43 +66,33 @@
   <div class="well" style="background-color: #ef8f09">
    <div class="row" style="background-color:white">
    	<div class="col-sm-2"></div>
- <div class="col-sm-1">
+ <div class="col-sm-2">
  	<a href="Apply_Job_Status" >
- Apply JOB STATUS</a>
+ Applied Job Status</a>
  </div>
- <
+ 
  <div class="col-sm-1">
  	<a href="Generat" >
  Generate CV</a></div>
  
- <div class="col-sm-1"></div>
  <div class="col-sm-1">
- 	 <a href="JobSeekerViewProfile.jsp" >View Proofile</a>
+ 	 <a href="JobSeekerViewProfile.jsp" >View Profile</a>
  </div>
  <div class="col-sm-1">
-  <a href="Logout.jsp" >Edit Proofile</a>
-</div>
-<div class="col-sm-1">
-  <a href="Logout.jsp" >Contact Us</a>
+  <a href="Logout.jsp" >Edit Profile</a>
 </div>
 <div class="col-sm-1">
   <a href="JobSeekerLogout">Logout</a>
 </div>
    </div>
   </div>
-</div>
+
 <div>
 <div class="wrapper-container">
 	<div class="well">
-    
-
-		</div>
-
-
 	</div>
-	
+</div>
 </div>
 
-</div>
 </body>
 </html>

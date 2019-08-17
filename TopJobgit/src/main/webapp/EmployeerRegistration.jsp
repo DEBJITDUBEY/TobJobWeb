@@ -18,7 +18,7 @@ body {
  padding: 40px;
   width: 70%;
   min-width: 300px;
-  background-image: url(Image/job1.jpg);
+/*   background-image: url(Image/job1.jpg); */
   background-size: cover;
    border-radius: 100px;
 }
@@ -94,7 +94,7 @@ button:hover {
 </div>
 <form id="regForm" method="post" action="EmployeerRegistration" enctype="multipart/form-data" >
   <h1>Register:</h1>
-  <div class="tab">
+  <div class="tab" id="tab1">
    <div class="row">
   <div class="col-sm-4"></div>
   <div class="col-sm-4">
@@ -102,17 +102,20 @@ button:hover {
 
   <div class="form-group">
    <label >Email:</label>
-   <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+   <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
+   <div id="emailerr"></div>
    </div>
 
    <div class="form-group">
     <label for="pwd">Password:</label>
     <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
+    <div id="pwderr"></div>
    </div>
    
 <div class="form-group">
    <label >MOBILE-NO:</label>
    <input type="text" class="form-control" id="mob" name="mob" placeholder="Enter email">
+   <div id="moberr"></div>
    </div>
 </div>
 <div class="col-sm-4"></div>
@@ -120,15 +123,16 @@ button:hover {
 </div>
                       
           
-  <div class="tab">Personal info:
+  <div class="tab" id="tab2">Personal info:
     <div class="row">
   <div class="col-sm-4"></div>
   <div class="col-sm-4">
     <label >Registers Name:</label>
    <input type="text" class="form-control" id="Rname" name="Rname" placeholder="Enter Your name">
+   <div id="Rnameerr"></div>
  <label >Company name:</label>
    <input type="text" class="form-control" id="Cname" name="Cname" placeholder="Enter Your company name">
-
+ <div id="Cnameerr"></div>
 <label for="Industry">Industry type:</label>
     <select class="form-control" id="i1" name="industryname">
         <option value='IT'>IT</option>
@@ -151,7 +155,7 @@ button:hover {
     <br>
      <label >GST NO:</label>
    <input type="text" class="form-control" id="GSTNO" name="GSTNO" placeholder="Enter GST no">
-
+  <div id="GSTNOerr"></div>
   </div>
   <div class="col-sm-4"></div>
   </div>
@@ -159,17 +163,20 @@ button:hover {
 
   
 </div>
-  <div class="tab">
+  <div class="tab" id="tab3">
     <div class="row">
   <div class="col-sm-4"></div>
   <div class="col-sm-4">
      <label for="Office Address">Office Address:</label>
       <input type="text" class="form-control" id="o1" name="o1" placeholder="Enter Address">
+     <div id="o1err"></div>
 
        <label for="City">City</label>
       <input type="text" class="form-control" id="c1" name="c1" placeholder="Enter City">
+        <div id="c1err"></div>
       <label for="pin">Pin</label>
       <input type="text" class="form-control" id="p1" name="p1" placeholder="Enter Pin">
+     <div id="p1err"></div>
 
       <label for="Country">Country</label>
         <select multiple class="form-control" id="co1" name="co1">
@@ -184,20 +191,22 @@ button:hover {
 
  <label for="office number">Office Number</label>
       <input type="text" class="form-control" id="on1" name="on1" placeholder="Enter Number">
-
+      <div id="on1err"></div>
       </div>
       <div class="col-sm-4"></div>
   
 </div>
 </div>
-        <div class="tab">
+        <div class="tab" id="tab4">
     <div class="row">
   <div class="col-sm-4"></div>
   <div class="col-sm-4">
-<label for="profile photo">Profile Photo:</label>
+<label for="profile photo">Profile Photo(Jpg File):</label>
       <input type="file" class="form-control" id="p2" name="p2" placeholder="upload photo">
+      <div id="p2err"></div>
       <label for="id">Government Id</label>
-      <input type="text" class="form-control" id="c1" name="c2" placeholder="Enter id number">
+      <input type="text" class="form-control" id="c2" name="c2" placeholder="Enter id number">
+      <div id="c2err"></div>
        </div>
        <div class="col-sm-4"></div>
   
@@ -263,6 +272,7 @@ function validateForm() {
   // This function deals with validation of the form fields
   var x, y, i, valid = true;
   x = document.getElementsByClassName("tab");
+
   y = x[currentTab].getElementsByTagName("input");
   // A loop that checks every input field in the current tab:
   for (i = 0; i < y.length; i++) {
@@ -274,6 +284,154 @@ function validateForm() {
       valid = false;
     }
   }
+  
+  if(valid)  {
+  if(currentTab==0){
+	  var email = document.getElementById("email").value;
+	  var emailrr = document.getElementById("emailerr");
+	  var pwd = document.getElementById("pwd").value;
+	  var pwderr = document.getElementById("pwderr");
+	  var mob = document.getElementById("mob").value;
+	  var moberr = document.getElementById("moberr");
+	  
+	  var email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+	  var mob_regex = /^[1-9]{1}[0-9]{9}$/i;
+	  if(!email_regex.test(email)){ 
+		  emailerr.innerHTML='Email is invalid'; 
+		  valid=false;
+		 }
+	  else{
+		  emailerr.innerHTML=''; 
+	  }
+	  if(!mob_regex.test(mob)){
+		  moberr.innerHTML='Mobile Number is invalid'; 
+		  valid=false;
+	  }
+	  else{
+		  moberr.innerHTML=''; 
+	  }
+	  
+	  
+	  
+  }
+  
+  if(currentTab==1){
+	  var rname = document.getElementById("Rname").value;
+	  var rnameerr = document.getElementById("Rnameerr");
+	  var Cname = document.getElementById("Cname").value;
+	  var Cnameerr = document.getElementById("Cnameerr");
+	  var GSTNO = document.getElementById("GSTNO").value;
+	  alert("gst_no:"+GSTNO);
+	  var GSTNOerr = document.getElementById("GSTNOerr");
+	  
+	  var Cname_regex = /^[a-zA-Z ]{6,}$/i;
+	  var rname_regex = /^[a-zA-Z ]{6,}$/i;
+	  var Gst_regex = /^[0-3]{1}[0-5]{1}[A-Z]{5}[0-9]{4}[A-Z]{1}[0-9]{1}[A-Z]{1}[0-9]{1}$/i;
+	  if(!rname_regex.test(rname)){ 
+		  rnameerr.innerHTML='Name is invalid'; 
+		  valid=false;
+		 }
+	  else{
+		  rnameerr.innerHTML=''; 
+	  }
+	  
+	  
+	  if(!Cname_regex.test(Cname)){ 
+		  Cnameerr.innerHTML='Company Name is invalid'; 
+		  valid=false;
+		 }
+	  else{
+		  Cnameerr.innerHTML=''; 
+	  }
+	  
+	  
+	  if(!Gst_regex.test(GSTNO)){ 
+		  GSTNOerr.innerHTML='PROPER FORMAT  22ABCDE1234F2Z5'; 
+		  valid=false;
+		 }
+	  else{
+		  GSTNOerr.innerHTML=''; 
+	  }
+	  
+  }
+  if(currentTab==2){
+	  var o1 = document.getElementById("o1").value;
+	  var o1err = document.getElementById("o1err");
+	  var c1 = document.getElementById("c1").value;
+	  var c1err = document.getElementById("c1err");
+	  var p1 = document.getElementById("p1").value;
+	  var p1err = document.getElementById("p1err");
+	  
+	  var on1 = document.getElementById("on1").value;
+	  var on1err = document.getElementById("on1err");
+	  var C1_regex = /^[a-zA-Z]{6,}$/i;
+	  var o1_regex = /^[a-zA-Z0-9 ,# ]{10,}$/i;
+	  var P1_regex = /^[0-9]{7,}$/i;
+	  var on1_regex = /^[1-9]{1}[0-9]{9}$/i;
+	  if(!o1_regex.test(o1)){ 
+		  o1err.innerHTML='Address is invalid'; 
+		  valid=false;
+		 }
+	  else{
+		  o1err.innerHTML=''; 
+	  }
+	  
+	  
+	  if(!C1_regex.test(c1)){ 
+		  c1err.innerHTML='City Name is invalid'; 
+		  valid=false;
+		 }
+	  else{
+		  c1err.innerHTML=''; 
+	  }
+	  
+	  
+	  if(!P1_regex.test(p1)){ 
+		  p1err.innerHTML='pin is invalid'; 
+		  valid=false;
+		 }
+	  else{
+		  p1err.innerHTML=''; 
+	  }
+	  
+	  if(!on1_regex.test(on1)){ 
+		  on1err.innerHTML='Number is invalid'; 
+		  valid=false;
+		 }
+	  else{
+		  on1err.innerHTML=''; 
+	  }
+	  
+	  
+	  
+  }
+  
+  if(currentTab==3){
+	  var c2 = document.getElementById("c2").value;
+	  var p2= document.getElementById("p2").value;
+	  
+	  var c2err= document.getElementById("c2err");
+	  var p2err= document.getElementById("p2err");
+	  
+	  var pos=p2.lastIndexOf(".");
+	  var str=p2.substr(pos+1);
+	 
+	  if(!(str=='jpg' || str=='jpeg')){
+		  p2err.innerHTML='Image format invalid'; 
+		  valid=false;
+		 }
+	  else{
+		  p2err.innerHTML=''; 
+	  }
+	  
+	  
+	  
+   alert(c1+" "+p1);
+  }
+  
+  }
+  
+  
   // If the valid status is true, mark the step as finished and valid:
   if (valid) {
     document.getElementsByClassName("step")[currentTab].className += " finish";
