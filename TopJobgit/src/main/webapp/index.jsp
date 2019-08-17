@@ -12,22 +12,50 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
- <script>
-    $(document).ready(function(){
-      
-      $('#form1').submit(function(e){
-          var uid=$('#email').val();
-           var pwd=$('#pwd').val();
-  if(uid.length<1){
-            $('#email').after('<span class="error">Email is required</span>');
-           }
-            if(pwd.length<1){
-            $('#pwd').after('<span class="error">Password is required</span>');
-           }
+  <style type="text/css">
+    .error
+    {
+      color: red;
+      margin-left: 5px;
+    }
+  </style>
+  <script type="text/javascript">
 
-        });  
-   });
-  </script>
+
+$(document).ready(function(){ 
+
+	 
+$('#form').submit(function(e){
+
+e.preventDefault();
+$(".error").remove();
+var emailstr = $('#email').val();
+var passwrdstr = $('#pwd').val();
+var count=0;
+
+if(emailstr.length<1){
+    $('#email').after('<span class="error">Email is required</span>');  count++;
+   }
+else {
+	   email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+	   if(!email_regex.test(emailstr)){ 
+		   $('#email').after('<span class="error">Email is invalid format</span>');  count++; 
+		   }
+	 }
+   
+if(passwrdstr.length<1){
+    $('#pwd').after('<span class="error">Password is required</span>'); count++;
+   }
+  if(count==0)
+	  return true;
+  else
+	  return false;
+  
+});
+
+ }); 
+
+</script>
 
 <style type="text/css">
   .mega-menu{
@@ -109,8 +137,8 @@
      
       <div class="well">
 <div >
-<form action="JobSeekerLogin" method="post" id="form1">
-  <center><h3>Student login</h3>
+<form action="JobSeekerLogin" method="post" id="form">
+  <center><h3>JobSeeker login</h3>
   <%
       String status=(String)request.getAttribute("status");
       if(status!=null){
@@ -120,13 +148,13 @@
   </center>
   <div class="form-group">
     <label >EMAIL:</label>
-    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+    <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
   </div>
   <div class="form-group">
     <label >PASSWORD:</label>
     <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
   </div>
-    <center><button type="submit"  class="btn btn-primary">SUBMIT</button>
+    <center><button type="submit" id="button" class="btn btn-success">Login</button>
 
      <button type="button"  class="btn btn-danger" >RESET</button>
      </center>

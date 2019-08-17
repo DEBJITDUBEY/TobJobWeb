@@ -5,12 +5,57 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bootstrap.min.css">
-  <script src="jquery.min.js"></script>
-  <script src="bootstrap.min.js"></script>
+  
   
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    .error
+    {
+      color: red;
+      margin-left: 5px;
+    }
+  </style>
+  <script type="text/javascript">
+
+
+$(document).ready(function(){ 
+
+	 
+$('#form').submit(function(e){
+
+e.preventDefault();
+$(".error").remove();
+var emailstr = $('#email').val();
+var passwrdstr = $('#pwd').val();
+var count=0;
+
+if(emailstr.length<1){
+    $('#email').after('<span class="error">Email is required</span>');  count++;
+   }
+else {
+	   email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+	   if(!email_regex.test(emailstr)){ 
+		   $('#email').after('<span class="error">Email is invalid format</span>');  count++; 
+		   }
+	 }
+   
+if(passwrdstr.length<1){
+    $('#pwd').after('<span class="error">Password is required</span>'); count++;
+   }
+  if(count==0)
+	  return true;
+  else
+	  return false;
+  
+});
+
+ }); 
+
+</script>
+  
+  
   
 </head>
 
@@ -37,17 +82,20 @@
 
   <div class="col-sm-4">
   
-<form action="EmployeerLogin" method="post">
+<form action="EmployeerLogin" method="post" id="form">
 		<div class="form-group">
 			<label for="email">Email:</label>
-			<input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+			<input type="text" class="form-control" id="email" name="email" placeholder="Enter Email">
+			<div id="emailerr"></div>
 		</div>
 		<div class="form-group">
 			<label for="pwd">Password:</label>
 			<input type="Password" class="form-control" id="pwd" name="pwd" placeholder="Enter Password">
+			<div id="pwderr"></div>
 		</div>
 		<center>
-		<button class="btn btn-success" >Login</button>
+		<!-- <button class="btn btn-success" id="submitbtn">Login</button> -->
+		<button type="submit" id="button" class="btn btn-success">Login</button>
 		</center>
 	</form>
 		<center>

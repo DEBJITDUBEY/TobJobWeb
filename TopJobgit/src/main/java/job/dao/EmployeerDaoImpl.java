@@ -269,4 +269,49 @@ public String makeUsersLogin(Employeer employer) {
 	 }
 	  return days;
 }
+	 
+	 public boolean ShortListed(String appid) {
+		 boolean status=false;
+		 try {
+			 Class.forName("com.mysql.cj.jdbc.Driver"); 
+				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jobdb?useSSL=false","root","myroot");
+				PreparedStatement smt=con.prepareStatement("update applyjob set status='Yes' where app_id=?");
+				smt.setString(1,appid);
+				int rs=smt.executeUpdate();
+				
+				con.close();
+				if(rs>0) {
+		   status=true;}
+		 }
+		 catch(Exception e) {
+			 
+		 }
+		return status;
+		 
+		 
+		 
+		 
+	 }
+	 
+	 public Employeer employeerViewProfile(String email) {
+		 Employeer employeer=new Employeer();
+		 try {
+			 Class.forName("com.mysql.cj.jdbc.Driver"); 
+			 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jobdb?useSSL=false","root","myroot");
+			 PreparedStatement smt=con.prepareStatement("select * from employeer where email=?");
+			 smt.setString(1,email);
+			 ResultSet rs=smt.executeQuery();
+			 
+			 if(rs.next()) {
+				 employeer.setEmail(rs.getString(1));
+			 }
+			 
+		 }
+		 catch(Exception e) {
+		 }
+		return employeer;
+		 
+	 }
+	 
+	 
 }

@@ -119,6 +119,13 @@
   	<servlet-name>setPassword</servlet-name>
   	<servlet-class>job.controller.setPassword</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>EmployeerViewProfile</display-name>
+  	<servlet-name>EmployeerViewProfile</servlet-name>
+  	<servlet-class>job.controller.EmployeerViewProfile</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>EmployeerLogin</servlet-name>
   	<url-pattern>/EmployeerLogin</url-pattern>
@@ -214,6 +221,10 @@
   <servlet-mapping>
   	<servlet-name>setPassword</servlet-name>
   	<url-pattern>/setPassword</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EmployeerViewProfile</servlet-name>
+  	<url-pattern>/EmployeerViewProfile</url-pattern>
   </servlet-mapping>
   
 <filter>

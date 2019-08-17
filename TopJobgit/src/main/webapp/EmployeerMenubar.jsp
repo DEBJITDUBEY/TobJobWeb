@@ -48,11 +48,9 @@
  <div class="col-sm-1">
  	<a href="EmployeerViewJobs.jsp" >
  View Jobs </a></div>
+ 
  <div class="col-sm-1">
- 	 <a href="scheme.jsp" >Schemes</a>
- </div>
- <div class="col-sm-1">
- 	 <a href="EmployeerViewProfile.jsp" >View Proofile</a>
+ 	 <a href="EmployeerViewProfile" >View Proofile</a>
  </div>
  <div class="col-sm-1">
   <a href="Logout.jsp" >Edit Proofile</a>
