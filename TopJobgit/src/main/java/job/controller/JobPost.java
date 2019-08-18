@@ -1,6 +1,9 @@
 package job.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,8 +45,13 @@ public class JobPost extends HttpServlet {
 		boolean status= postedJobDaoImpl.makeJobPost(postedJob);
 		
 		
-		if(status)
+		if(status) {
+			RequestDispatcher rd=request.getRequestDispatcher("EmployeerHome.jsp");
+			PrintWriter out = response.getWriter();
+			rd.include(request, response);
+			out.println("<h3>You are Succesfully Post the Job.......</h3>");
 		System.out.println("good");
+		}
 		else
 			System.out.println("bad");
 	}

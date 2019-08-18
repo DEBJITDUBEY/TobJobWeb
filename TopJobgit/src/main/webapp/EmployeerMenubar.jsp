@@ -46,7 +46,7 @@
  Post Jobs </a>
  </div>
  <div class="col-sm-1">
- 	<a href="EmployeerViewJobs.jsp" >
+ 	<a href="viewJobs" >
  View Jobs </a></div>
  
  <div class="col-sm-1">

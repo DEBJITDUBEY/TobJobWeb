@@ -5,8 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
+import job.model.PostedJob;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -312,6 +315,36 @@ public String makeUsersLogin(Employeer employer) {
 		return employeer;
 		 
 	 }
-	 
+	 public List<PostedJob> ViewJobs(String empid) {
+		
+		 List jlist=new ArrayList<PostedJob>();
+		 try {
+		 Class.forName("com.mysql.cj.jdbc.Driver"); 
+		 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jobdb?useSSL=false","root","myroot");
+		 PreparedStatement smt=con.prepareStatement("select * from jobs where Employee_id=?");
+		 smt.setString(1,empid);
+		 ResultSet rs=smt.executeQuery();
+		 while(rs.next()) {
+			 PostedJob job=new PostedJob();
+			 job.setJobId(rs.getString(1));
+			 job.setCname(rs.getString(4));
+			 job.setCwebsite(rs.getString(5));
+			 job.setEmployeeId(rs.getString(2));
+			 job.setExperience(rs.getString(8));
+			 job.setJdescription(rs.getString(6));
+			 job.setJlocation(rs.getString(10));
+			 job.setJobTitle(rs.getString(3));
+			 job.setSalary(rs.getString(9));
+			 job.setSkills(rs.getString(7));
+			 job.setStatus(rs.getString(11));
+			 jlist.add(job);
+		 }
+		 }
+		 catch(Exception e) {
+			 System.out.println(e);
+		 }
+		return jlist;
+		 
+	 }
 	 
 }

@@ -24,7 +24,7 @@ PreparedStatement smt=con.prepareStatement("select jobseaker.*, applyjob.status,
 " where jobseaker.email=applyjob.job_seaker_id and applyjob.job_id=?");
 smt.setString(1,jobid);
 ResultSet rs=smt.executeQuery();
-String email=null;
+//String email=null;
 while(rs.next()) {
       	String url1="DownloadResume?id_details="+rs.getString(8);
     	String status = rs.getString(29);  
