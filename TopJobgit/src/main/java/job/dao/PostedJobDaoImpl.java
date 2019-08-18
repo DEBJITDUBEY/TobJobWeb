@@ -2,6 +2,7 @@ package job.dao;
 
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 import job.dbcon.DbConnection;
@@ -41,4 +42,22 @@ public class PostedJobDaoImpl {
 		return status;
 
 }
+	public boolean removeJobs(String jobId) {
+		boolean Status=false;
+	System.out.println(jobId);
+		try {
+			Connection con=new DbConnection().getConnection();
+			String sql="Delete from jobs where job_id=?";
+			PreparedStatement smt=con.prepareStatement(sql);
+			smt.setString(1,jobId);
+			int row= smt.executeUpdate();
+			if(row>0) {
+				Status=true;
+			}
+					
+		}catch(Exception e) {
+				System.out.println(e);
+			}
+		return Status;
+	}
 }

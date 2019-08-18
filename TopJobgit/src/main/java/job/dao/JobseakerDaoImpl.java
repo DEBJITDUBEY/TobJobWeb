@@ -1,11 +1,14 @@
 package job.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 
 import job.dbcon.DbConnection;
 import job.model.Applicatns;
@@ -155,5 +158,8 @@ public class JobseakerDaoImpl {
 		}
 		return alist;
 }
+	
+	
+	
 }
 

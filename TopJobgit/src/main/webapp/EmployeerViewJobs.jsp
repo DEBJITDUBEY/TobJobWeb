@@ -15,9 +15,6 @@ PostedJob job=new PostedJob();
 List<PostedJob> jlist=new ArrayList<PostedJob>();
 /* EmployeerDaoImpl daoImpl=new EmployeerDaoImpl(); */
 jlist=(List<PostedJob>)request.getAttribute("jlist");
-for(PostedJob j:jlist){
-	System.out.println(j.getJobId());
-}
 
 
 
@@ -39,7 +36,7 @@ for(PostedJob j:jlist){
 for(PostedJob j:jlist){
    String jobid = j.getJobId();
    String joburl="Applicant.jsp?jobid="+jobid;
-   String jobur2="RemoveJobs.jsp?jobid="+jobid;
+   String jobur2="RemoveJobs?jobid="+jobid;
    String jobur3="EditJobs.jsp?jobid="+jobid;
    String jobur4="ShortListed.jsp?jobid="+jobid;
 %>
