@@ -133,6 +133,13 @@
   	<servlet-name>viewJobs</servlet-name>
   	<servlet-class>job.controller.viewJobs</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>EditJobs1</display-name>
+  	<servlet-name>EditJobs1</servlet-name>
+  	<servlet-class>job.controller.EditJobs1</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>EmployeerLogin</servlet-name>
   	<url-pattern>/EmployeerLogin</url-pattern>
@@ -236,6 +243,10 @@
   <servlet-mapping>
   	<servlet-name>viewJobs</servlet-name>
   	<url-pattern>/viewJobs</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EditJobs1</servlet-name>
+  	<url-pattern>/EditJobs1</url-pattern>
   </servlet-mapping>
   
 <filter>

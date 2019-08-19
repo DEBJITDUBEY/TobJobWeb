@@ -2,6 +2,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="job.model.PostedJob"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -17,14 +18,9 @@
 </head>
 <body>
 <%
-String jobid= request.getParameter("jobid");
-System.out.println(jobid);
-Class.forName("com.mysql.cj.jdbc.Driver"); 
-Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jobdb?useSSL=false","root","myroot");
-PreparedStatement smt=con.prepareStatement("select * from jobs where Job_id=?");
-smt.setString(1,jobid);
-ResultSet rs=smt.executeQuery();
-    if(rs.next()) {
+PostedJob job=new  PostedJob();
+job=(PostedJob)request.getAttribute("job");
+   
     	%>
     <div class="row">
     <div class="col-sm-4"></div>
@@ -32,41 +28,41 @@ ResultSet rs=smt.executeQuery();
 <form action="EditJobs" method="post">
 <lable>JobId:
 </lable>
-	<%=rs.getString(1) %>
+	<%=job.getJobId() %>
 	<br>
 	<lable>JobTitle:
 	
 </lable>
-<input type="hidden" name="jobid" id="jobid" Value="<%=rs.getString(1) %>">
-	<input type="text" name="Jobtitle" id="jobtitle" Value="<%=rs.getString(3) %>">
+<input type="hidden" name="jobid" id="jobid" Value="<%=job.getJobId() %>">
+	<input type="text" name="Jobtitle" id="jobtitle" Value="<%=job.getJobTitle() %>">
 	<br>
 	<lable>Company Name:
 </lable>
-	<input type="text" name="cname" id="cname" Value="<%=rs.getString(4) %>">
+	<input type="text" name="cname" id="cname" Value="<%=job.getCname()%>">
 	<br>
 	<lable>Company Website:
 </lable>
-	<input type="text" name="cwebsite" id="cwebsite" Value="<%=rs.getString(5) %>">
+	<input type="text" name="cwebsite" id="cwebsite" Value="<%=job.getCwebsite()%>">
 	<br>
 	<lable>Job Description:
 </lable>
-	<input type="text" name="jdescription" id="jdescription" Value="<%=rs.getString(6) %>">
+	<input type="text" name="jdescription" id="jdescription" Value="<%=job.getJdescription() %>">
 	<br>
 	<lable>Job Skills:
 </lable>
-	<input type="text" name="jskilss" id="jskilss" Value="<%=rs.getString(7) %>">
+	<input type="text" name="jskilss" id="jskilss" Value="<%=job.getSkills()%>">
 	<br>
 	<lable>Job Experience:
 </lable>
-	<input type="text" name="jexperience" id="jexperience" Value="<%=rs.getString(8) %>">
+	<input type="text" name="jexperience" id="jexperience" Value="<%=job.getExperience() %>">
 	<br>
 	<lable>Job Salary:
 </lable>
-	<input type="text" name="jsalary" id="jsalary" Value="<%=rs.getString(9) %>">
+	<input type="text" name="jsalary" id="jsalary" Value="<%=job.getSalary() %>">
 	<br>
 	<lable>Job Location:
 </lable>
-	<input type="text" name="jlocation" id="jlocation" Value="<%=rs.getString(10) %>">
+	<input type="text" name="jlocation" id="jlocation" Value="<%=job.getJlocation() %>">
 	
 
 
@@ -78,8 +74,4 @@ ResultSet rs=smt.executeQuery();
 </div>
 </body>
 </html>
-<%
-}
-rs.close();
-con.close();
-%>
+

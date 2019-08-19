@@ -37,7 +37,7 @@ for(PostedJob j:jlist){
    String jobid = j.getJobId();
    String joburl="Applicant.jsp?jobid="+jobid;
    String jobur2="RemoveJobs?jobid="+jobid;
-   String jobur3="EditJobs.jsp?jobid="+jobid;
+   String jobur3="EditJobs1?jobid="+jobid;
    String jobur4="ShortListed.jsp?jobid="+jobid;
 %>
    <div class="col-sm-4">

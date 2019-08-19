@@ -1,9 +1,11 @@
 package job.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import job.model.PostedJob;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import job.dao.PostedJobDaoImpl;
 import job.dbcon.DbConnection;
 
 /**
@@ -48,29 +51,32 @@ public class EditJobs extends HttpServlet {
 			String salary=request.getParameter("jsalary");
 			String jlocation=request.getParameter("jlocation");
 			String status1="F";
+			PostedJob job= new PostedJob();
+			job.setJobId(jobId);
+			job.setJobTitle(jobTitle);
+			job.setCname(cname);
+			job.setCwebsite(cwebsite);
+			job.setExperience(experience);
+			job.setJdescription(jdescription);
+			job.setJlocation(jlocation);
+			job.setSkills(skills);
+			job.setSalary(salary);
+			job.setStatus(status1);
 			
-			Connection con=new DbConnection().getConnection();
-			String sql="update jobs set Job_title=?,Company_name=? ,Company_website=?, Job_descriptions=?, skills=?, Experience=? ,salary=? ,Job_Location=? ,Status1=? where job_id=?";
-			PreparedStatement smt=con.prepareStatement(sql);
-			smt.setString(1,jobTitle);
-			smt.setString(2,cname);
-			smt.setString(3,cwebsite);
-			smt.setString(4,jdescription);
-			smt.setString(5,skills);
-			smt.setString(6,experience);
-			smt.setString(7,salary);
-			smt.setString(8,jlocation);
-			smt.setString(9,status1);
-			smt.setString(10,jobId);
-			int row= smt.executeUpdate();
-			System.out.println(row);
-			con.close();
-			RequestDispatcher rd = request.getRequestDispatcher("EmployeerViewJobs.jsp");
-			rd.forward(request, response);
+			PostedJobDaoImpl daoImpl=new PostedJobDaoImpl();
+			boolean status=daoImpl.editJobsUpdate(job);
+			if(status) {
+				RequestDispatcher rd=request.getRequestDispatcher("EmployeerHome.jsp");
+				PrintWriter out = response.getWriter();
+				rd.include(request, response);
+				out.println("<h3>You are Succesfully Edit the Job.......</h3>");
 			}
-			catch(Exception e) {
-				System.out.println(e);
-			}
+			
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		
 	}}
 
 		
