@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="job.dbcon.DbConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
@@ -260,8 +261,8 @@ if(passwrdstr.length<1){
 </div>
 </div>
 <%
-Class.forName("com.mysql.cj.jdbc.Driver"); 
-Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/jobdb?useSSL=false","root","myroot");
+Class.forName("com.mysql.jdbc.Driver"); 
+Connection con=new DbConnection().getConnection();
 PreparedStatement smt=con.prepareStatement("select * from jobs where status1='T'");
 ResultSet rs=smt.executeQuery();
 %>
