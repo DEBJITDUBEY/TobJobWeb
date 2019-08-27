@@ -6,7 +6,8 @@
 	public class DbConnection {
 	 public Connection getConnection() throws Exception{
 	  Class.forName("com.mysql.cj.jdbc.Driver"); 
-	  Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/jobdb?useSSL=false","root","myroot");
+	  Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/jobdb?allowPublicKeyRetrieval=true&useSSL=false","root","myroot");
+			//  jdbc:mysql://localhost:3306/jobdb?useSSL=false","root","myroot");
 	  return connection;
 	 }
 	}
