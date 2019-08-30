@@ -8,7 +8,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"> 
          
   <display-name>Archetype Created Web Application</display-name>
-  <servlet>
+    <servlet>
   	<servlet-name>EmployeerLogin</servlet-name>
   	<servlet-class>job.controller.EmployeerLogin</servlet-class>
   </servlet>
@@ -147,6 +147,13 @@
   	<servlet-name>SearchHome</servlet-name>
   	<servlet-class>job.controller.SearchHome</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>JobSeekerViewProfile</display-name>
+  	<servlet-name>JobSeekerViewProfile</servlet-name>
+  	<servlet-class>job.controller.JobSeekerViewProfile</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>EmployeerLogin</servlet-name>
   	<url-pattern>/EmployeerLogin</url-pattern>
@@ -189,7 +196,7 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>JobSeekerLogout</servlet-name>
-  	<url-pattern>/JobSeekerLogout</url-pattern>
+  	<url-pattern>/jobseeker/JobSeekerLogout</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>AllowJobs</servlet-name>
@@ -229,7 +236,7 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>Apply_Job_Status</servlet-name>
-  	<url-pattern>/Apply_Job_Status</url-pattern>
+  	<url-pattern>/jobseeker/Apply_Job_Status</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>EmployeerPasswordRecovery</servlet-name>
@@ -259,13 +266,18 @@
   	<servlet-name>SearchHome</servlet-name>
   	<url-pattern>/SearchHome</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>JobSeekerViewProfile</servlet-name>
+  	<url-pattern>/jobseeker/JobSeekerViewProfile</url-pattern>
+  </servlet-mapping>
   
 <filter>
- <filter-name>EmployeerFilter</filter-name>
- <filter-class>job.model.EmployeerFilter</filter-class>
+ <filter-name>JobSeekerFilter</filter-name>
+ <filter-class>job.model.JobSeekerFilter</filter-class>
  </filter>
 <filter-mapping>
-<filter-name>EmployeerFilter</filter-name>
-<url-pattern>/emp/*</url-pattern>
-</filter-mapping>  
+<filter-name>JobSeekerFilter</filter-name>
+<url-pattern>/jobseeker/*</url-pattern>
+</filter-mapping>   
+
 </web-app>

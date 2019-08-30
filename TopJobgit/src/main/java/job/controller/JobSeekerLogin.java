@@ -43,12 +43,13 @@ public class JobSeekerLogin extends HttpServlet {
 		
 		JobseakerDaoImpl   jobseakerDaoImpl  = new JobseakerDaoImpl();
 		boolean status = jobseakerDaoImpl.makeUsersLogin(jobseaker);
-		
+		System.out.println("status="+status);
 		if(status) {
 			HttpSession session=request.getSession();
 			session.setAttribute("emailid", emailid);
+			session.setAttribute("role", "jobseeker");
 			//RequestDispatcher rd = request.getRequestDispatcher("JobseekerHome.jsp");
-			response.sendRedirect("JobseekerHome.jsp");
+			response.sendRedirect(getServletContext().getContextPath()+"/jobseeker/JobseekerHome.jsp");
 			//PrintWriter out = response.getWriter();
 			//rd.include(request, response);
 			//out.println("<h3>Welcome.......</h3>");
@@ -56,12 +57,13 @@ public class JobSeekerLogin extends HttpServlet {
 		
 		else {
 			request.setAttribute("status","Sorry! Try again......");
-			//RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			//PrintWriter out = response.getWriter();
-			//rd.forward(request, response);
-			response.sendRedirect("index.jsp");
+			rd.forward(request, response);
+			//response.sendRedirect("index.jsp");
+	}
 	}
 
 }
 
-}
+
